@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusBot - Intelligent College Admission Assistant</title>
+    <meta name="description" content="CampusBot is an AI-powered college admission assistant using local Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) to answer student queries with zero paid APIs.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="landing-body">
+    <!-- Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand-logo" id="brand-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="brand-name">
+                    <span>Campus<strong>Bot</strong></span>
+                    <span class="brand-tag">AI Admission Assistant</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#benefits" class="nav-link">Benefits</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <!-- Navigation Actions -->
+            <div class="nav-actions">
+                <div class="nav-status-badge" id="nav-status-badge" title="Local Ollama AI Status">
+                    <span class="status-pulse-dot" id="status-dot"></span>
+                    <span class="status-label" id="status-label">Checking AI...</span>
+                </div>
+                <a href="/chat" class="btn btn-primary btn-nav" id="btn-nav-chat">
+                    <span>Start Chatting</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <button class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="Toggle navigation menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <div class="drawer-header">
+            <div class="brand-logo">
+                <div class="brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <span>Campus<strong>Bot</strong></span>
+            </div>
+            <button class="drawer-close-btn" id="drawer-close-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="drawer-links">
+            <a href="#home" class="drawer-link">Home</a>
+            <a href="#benefits" class="drawer-link">Benefits</a>
+            <a href="#features" class="drawer-link">Features</a>
+            <a href="#how-it-works" class="drawer-link">How It Works</a>
+            <a href="#about" class="drawer-link">About</a>
+            <a href="#contact" class="drawer-link">Contact</a>
+            <a href="/admin" class="drawer-link"><i class="fa-solid fa-folder-open"></i> Knowledge Base Admin</a>
+        </div>
+        <div class="drawer-footer">
+            <a href="/chat" class="btn btn-primary btn-block">
+                <span>Start Chatting</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="home">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-icon"><i class="fa-solid fa-bolt"></i></span>
+                        <span>100% Free & Local AI • Powered by Ollama & LLaMA 3.2</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Your College Journey <br>
+                        <span class="gradient-text">Starts Here.</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Meet CampusBot, your intelligent AI admission assistant. Get instant answers about admissions, courses, eligibility, fees, scholarships, and campus facilities — all in one place.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="/chat" class="btn btn-primary btn-lg" id="hero-start-btn">
+                            <i class="fa-solid fa-comments"></i>
+                            <span>Start Chatting</span>
+                        </a>
+                        <a href="#features" class="btn btn-secondary btn-lg" id="hero-explore-btn">
+                            <i class="fa-solid fa-compass"></i>
+                            <span>Explore Features</span>
+                        </a>
+                    </div>
+                    <div class="hero-metrics">
+                        <div class="metric-item">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Zero Cloud Data Tracking</span>
+                        </div>
+                        <div class="metric-item">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <span>Official College Document RAG</span>
+                        </div>
+                        <div class="metric-item">
+                            <i class="fa-solid fa-server"></i>
+                            <span>Local Inference on Windows</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual CSS Illustration -->
+                <div class="hero-visual-wrapper">
+                    <div class="hero-visual-card">
+                        <!-- Simulated Interactive Chat Card -->
+                        <div class="visual-header">
+                            <div class="visual-avatar">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <div class="visual-title">
+                                <strong>CampusBot AI</strong>
+                                <span class="visual-badge"><i class="fa-solid fa-circle"></i> Grounded by RAG</span>
+                            </div>
+                            <div class="visual-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+
+                        <!-- Chat Simulation Stream -->
+                        <div class="visual-chat-body">
+                            <!-- Student Query -->
+                            <div class="visual-msg user-msg">
+                                <div class="msg-bubble">
+                                    <p>What documents do I need to submit for B.Tech admission verification?</p>
+                                </div>
+                                <div class="msg-avatar user-av"><i class="fa-solid fa-user"></i></div>
+                            </div>
+
+                            <!-- Bot Response -->
+                            <div class="visual-msg bot-msg">
+                                <div class="msg-avatar bot-av"><i class="fa-solid fa-robot"></i></div>
+                                <div class="msg-bubble">
+                                    <p>According to the official admission document checklist, confirmed candidates must submit:</p>
+                                    <ul>
+                                        <li>10th & 12th Board Certificates & Mark Sheets</li>
+                                        <li>Transfer (TC) & Migration Certificates</li>
+                                        <li>Entrance Exam Rank Card</li>
+                                        <li>Govt Photo ID & 5 Passport Photographs</li>
+                                    </ul>
+                                    <div class="visual-source-tag">
+                                        <i class="fa-solid fa-file-lines"></i>
+                                        <span>Source: demo_admission_faq.txt (Page 1)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badges Around Illustration -->
+                        <div class="floating-badge badge-1">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <div>
+                                <strong>Engineering Branches</strong>
+                                <small>CSE • IT • ECE • ME</small>
+                            </div>
+                        </div>
+
+                        <div class="floating-badge badge-2">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                            <div>
+                                <strong>Fee Structures & Waivers</strong>
+                                <small>Merit & Need-based Aid</small>
+                            </div>
+                        </div>
+
+                        <div class="floating-badge badge-3">
+                            <i class="fa-solid fa-award"></i>
+                            <div>
+                                <strong>Eligibility Rules</strong>
+                                <small>Verified College Criteria</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust & Benefits Section -->
+        <section class="section benefits-section" id="benefits">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">Why CampusBot</span>
+                    <h2 class="section-title">Built for Modern Educational Guidance</h2>
+                    <p class="section-description">A privacy-first, locally hosted architecture designed to help students navigate admissions smoothly without paid subscriptions or third-party cloud lock-in.</p>
+                </div>
+
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon icon-blue">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h3 class="benefit-title">Free Local AI</h3>
+                        <p class="benefit-desc">
+                            Runs completely free on your computer via Ollama using LLaMA 3.2. No OpenAI accounts, API keys, subscription fees, or cloud credits required.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon icon-purple">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 class="benefit-title">Instant AI Assistance</h3>
+                        <p class="benefit-desc">
+                            Delivers rapid, conversational guidance 24/7. Students receive structured, polite, and comprehensive answers to complex admission procedures immediately.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon icon-cyan">
+                            <i class="fa-solid fa-file-magnifying-glass"></i>
+                        </div>
+                        <h3 class="benefit-title">College Document Search</h3>
+                        <p class="benefit-desc">
+                            Retrieval-Augmented Generation (RAG) indexes official brochures, prospectuses, and policy PDFs, providing factual answers directly cited from verified sources.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon icon-emerald">
+                            <i class="fa-solid fa-user-shield"></i>
+                        </div>
+                        <h3 class="benefit-title">Privacy-Focused Processing</h3>
+                        <p class="benefit-desc">
+                            Conversations and documents never leave your local environment. Student inquiries and academic files remain completely private and isolated.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section features-section" id="features">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">Comprehensive Features</span>
+                    <h2 class="section-title">Everything Prospective Students Need</h2>
+                    <p class="section-description">An end-to-end admission guidance assistant powered by state-of-the-art NLP, vector search, and clean modular architecture.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-comments"></i></div>
+                        <h3>AI-Powered Chatbot</h3>
+                        <p>Natural conversational interface powered by local LLaMA 3.2:3b responding intuitively to admission queries.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-compass"></i></div>
+                        <h3>Admission Guidance</h3>
+                        <p>Step-by-step walkthroughs of application workflows, entrance exams, deadlines, and counseling stages.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-book-open"></i></div>
+                        <h3>Course Information</h3>
+                        <p>Detailed breakdowns of engineering branches, specializations, curriculum focus areas, and degree options.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-circle-check"></i></div>
+                        <h3>Eligibility Assistance</h3>
+                        <p>Instant clarity on high school prerequisites, minimum percentage thresholds, and entrance requirements.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-receipt"></i></div>
+                        <h3>Fee Structure Information</h3>
+                        <p>Clear presentation of tuition, development charges, hostel costs, security deposits, and payment terms.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-award"></i></div>
+                        <h3>Scholarship Guidance</h3>
+                        <p>Information on merit-based waivers, financial aid programs, government concessions, and application criteria.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-list-check"></i></div>
+                        <h3>Required Document Checklist</h3>
+                        <p>Comprehensive lists of original certificates, photocopies, identity proofs, and photographs required for verification.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                        <h3>PDF-Based Question Answering</h3>
+                        <p>Upload official college brochures and prospectuses to index them directly into the vector database.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                        <h3>Local AI Processing</h3>
+                        <p>Self-contained execution via local Ollama and SQLite database without third-party cloud dependencies.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                        <h3>Conversation History</h3>
+                        <p>Multi-thread SQLite conversation management allows students to revisit, continue, or clear previous chats.</p>
+                    </div>
+                </div>
+
+                <div class="feature-cta text-center">
+                    <a href="/chat" class="btn btn-primary btn-lg">
+                        <span>Try CampusBot Now</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="section workflow-section" id="how-it-works">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">System Architecture</span>
+                    <h2 class="section-title">How CampusBot Works</h2>
+                    <p class="section-description">A five-step Retrieval-Augmented Generation pipeline connecting students with verified college facts.</p>
+                </div>
+
+                <div class="steps-container">
+                    <div class="step-card">
+                        <div class="step-num">1</div>
+                        <div class="step-icon"><i class="fa-solid fa-user-pen"></i></div>
+                        <h3>Student Enters a Question</h3>
+                        <p>The student types an admission inquiry in the clean chat interface or selects a starter prompt.</p>
+                    </div>
+
+                    <div class="step-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+                    <div class="step-card">
+                        <div class="step-num">2</div>
+                        <div class="step-icon"><i class="fa-solid fa-gears"></i></div>
+                        <h3>CampusBot Processes Query</h3>
+                        <p>Flask backend receives and sanitizes the query, generating semantic embeddings with local Ollama.</p>
+                    </div>
+
+                    <div class="step-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+                    <div class="step-card">
+                        <div class="step-num">3</div>
+                        <div class="step-icon"><i class="fa-solid fa-database"></i></div>
+                        <h3>RAG Retrieves Context</h3>
+                        <p>Cosine similarity search queries the local vector database for the most relevant document passages.</p>
+                    </div>
+
+                    <div class="step-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+                    <div class="step-card">
+                        <div class="step-num">4</div>
+                        <div class="step-icon"><i class="fa-solid fa-brain"></i></div>
+                        <h3>Local LLM Generates Answer</h3>
+                        <p>Ollama (LLaMA 3.2:3b) receives the retrieved facts alongside system instructions and drafts a grounded answer.</p>
+                    </div>
+
+                    <div class="step-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+                    <div class="step-card">
+                        <div class="step-num">5</div>
+                        <div class="step-icon"><i class="fa-solid fa-reply-all"></i></div>
+                        <h3>Answer & Citations Displayed</h3>
+                        <p>CampusBot renders the response in Markdown with exact source filenames and page numbers cited.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section about-section" id="about">
+            <div class="container">
+                <div class="about-card">
+                    <div class="about-grid">
+                        <div class="about-info">
+                            <span class="section-tag">About the Project</span>
+                            <h2 class="section-title">Engineering College Microproject</h2>
+                            <p>
+                                <strong>CampusBot</strong> is an applied Artificial Intelligence engineering project designed to demonstrate the real-world deployment of <strong>Large Language Models (LLMs)</strong> and <strong>Retrieval-Augmented Generation (RAG)</strong>.
+                            </p>
+                            <p>
+                                Rather than relying on paid cloud APIs (such as OpenAI or Anthropic), CampusBot is engineered to run 100% locally on standard PC hardware using Ollama's local inference runtime. This demonstrates practical edge computing, strict data privacy, zero recurring cloud expenditure, and verified document grounding.
+                            </p>
+                            <div class="about-tech-stack">
+                                <h4>Core Technologies:</h4>
+                                <div class="tech-tags">
+                                    <span class="tech-tag"><i class="fa-brands fa-python"></i> Python 3</span>
+                                    <span class="tech-tag"><i class="fa-solid fa-flask"></i> Flask 3</span>
+                                    <span class="tech-tag"><i class="fa-solid fa-robot"></i> Ollama (LLaMA 3.2:3b)</span>
+                                    <span class="tech-tag"><i class="fa-solid fa-vector-square"></i> Nomic Embed Text</span>
+                                    <span class="tech-tag"><i class="fa-solid fa-database"></i> SQLite 3</span>
+                                    <span class="tech-tag"><i class="fa-solid fa-file-pdf"></i> PyMuPDF</span>
+                                    <span class="tech-tag"><i class="fa-brands fa-js"></i> Vanilla JS & CSS3</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="about-highlight-box">
+                            <div class="highlight-item">
+                                <div class="highlight-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                                <div>
+                                    <strong>Academic viva Demonstration</strong>
+                                    <p>Fully functional on Windows, demonstrable locally to evaluators and professors.</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon"><i class="fa-solid fa-coins"></i></div>
+                                <div>
+                                    <strong>$0.00 Running Cost</strong>
+                                    <p>Zero paid tokens, zero recurring cloud bills, 100% open-source local stack.</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon"><i class="fa-solid fa-bullseye"></i></div>
+                                <div>
+                                    <strong>Document Grounding</strong>
+                                    <p>Avoids LLM hallucinations by restricting institutional claims to indexed college text.</p>
+                                </div>
+                            </div>
+                            <div class="about-portal-btn">
+                                <a href="/admin" class="btn btn-secondary btn-block">
+                                    <i class="fa-solid fa-sliders"></i>
+                                    <span>Open Knowledge Base Admin</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Support Section -->
+        <section class="section contact-section" id="contact">
+            <div class="container text-center">
+                <span class="section-tag">Admissions Enquiry</span>
+                <h2 class="section-title">Ready to Experience CampusBot?</h2>
+                <p class="section-description max-600">
+                    Test the chatbot with sample admission questions, upload official college prospectuses, or inspect source document citations.
+                </p>
+                <div class="contact-actions">
+                    <a href="/chat" class="btn btn-primary btn-lg">
+                        <i class="fa-solid fa-comments"></i>
+                        <span>Launch CampusBot Chat</span>
+                    </a>
+                    <a href="/admin" class="btn btn-secondary btn-lg">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <span>Manage Documents</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="container footer-container">
+            <div class="footer-col brand-col">
+                <div class="brand-logo footer-logo">
+                    <div class="brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="brand-name">
+                        <span>Campus<strong>Bot</strong></span>
+                    </div>
+                </div>
+                <p class="footer-tagline">
+                    An Intelligent College Admission Assistant using Large Language Models and Retrieval-Augmented Generation.
+                </p>
+                <div class="footer-badge">
+                    <i class="fa-solid fa-microchip"></i>
+                    <span>Local Ollama AI Edition</span>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Quick Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#benefits">Trust & Benefits</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#about">About Project</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Access Portals</h4>
+                <ul class="footer-links">
+                    <li><a href="/chat"><i class="fa-solid fa-comments"></i> AI Chat Assistant</a></li>
+                    <li><a href="/admin"><i class="fa-solid fa-sliders"></i> Admin & Documents</a></li>
+                    <li><a href="/api/status" target="_blank"><i class="fa-solid fa-code"></i> Status API Endpoint</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Project Notice</h4>
+                <p class="footer-disclaimer">
+                    <strong>Official College Notice:</strong> CampusBot is an academic student project designed to assist with admission inquiries. For final, legally binding seat allocations, cutoffs, and fee receipts, students must always verify details with the official university admission office.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>&copy; 2026 CampusBot. Engineering Microproject — All rights reserved.</p>
+                <p>Designed with Free Local AI &bull; No API Keys Required</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JS -->
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+DEMO DATA — FICTIONAL EXAMPLE FOR TESTING CAMPUSBOT. NOT OFFICIAL COLLEGE INFORMATION.
+DEMONSTRATION DATA ONLY — NOT AN OFFICIAL COLLEGE POLICY.
+
+Demo Institute of Technology
+Illustrative Scholarship and Financial Aid Information
+
+This file contains fictional scholarship examples for CampusBot testing. They are not official scholarships, government benefits, or guaranteed funding opportunities.
+
+Illustrative scholarship schemes
+1. Merit Scholarship: 20% tuition-fee waiver for illustrative students with 90% or above in the qualifying examination.
+2. Academic Excellence Scholarship: 10% tuition-fee waiver for illustrative students with 80–89.99%.
+3. Need-Based Financial Aid: illustrative assistance of ₹10,000–₹30,000 subject to a fictional review process.
+4. Government Scholarship Guidance: students should consult the applicable official government scholarship portal for real schemes.
+
+Important distinction
+The institute examples above are fictional and intended for product testing. Government scholarship guidance is general information only and must not be confused with an officially endorsed government program.

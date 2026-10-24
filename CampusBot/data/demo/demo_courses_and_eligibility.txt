@@ -1,0 +1,25 @@
+DEMO DATA — FICTIONAL EXAMPLE FOR TESTING CAMPUSBOT. NOT OFFICIAL COLLEGE INFORMATION.
+DEMONSTRATION DATA ONLY — NOT AN OFFICIAL COLLEGE POLICY.
+
+Demo Institute of Technology
+Illustrative Engineering Programs and Sample Eligibility Criteria
+
+This document contains fictional example information for software testing. It is not a real institution policy, official admission notice, or verified government regulation.
+
+Engineering programs offered in the demo set
+1. Computer Science and Engineering (CSE)
+2. Information Technology (IT)
+3. Electronics and Communication Engineering (ECE)
+4. Mechanical Engineering (ME)
+5. Artificial Intelligence and Data Science (AI & DS)
+6. Electrical Engineering (EE)
+
+Sample eligibility criteria for the demonstration programs
+- Applicants should have completed the qualifying 10+2 examination or an accepted equivalent.
+- Physics and Mathematics are required for the illustrative engineering programs.
+- Chemistry or an accepted alternative subject may be required according to the applicable fictional program rules.
+- A minimum qualifying percentage of 45% is used as an illustrative demo threshold only.
+- A sample entrance examination or counselling process may apply.
+
+Important note
+These criteria are fictional example criteria created for CampusBot testing. They are not verified real admission requirements and should not be interpreted as official policy at any real college.

@@ -1,0 +1,20 @@
+DEMO DATA — FICTIONAL EXAMPLE FOR TESTING CAMPUSBOT. NOT OFFICIAL COLLEGE INFORMATION.
+DEMONSTRATION DATA ONLY — NOT AN OFFICIAL COLLEGE POLICY.
+
+Demo Institute of Technology
+Illustrative Campus Facilities Overview
+
+This description is fictional example content for CampusBot testing. It is not official information about any real educational institution.
+
+Example facilities
+- Library with reading halls and digital access.
+- Computer laboratories for practical sessions.
+- Electronics laboratories for circuit and embedded work.
+- Wi-Fi access across academic blocks.
+- Hostel facilities for students, including rooms and common spaces.
+- Sports facilities such as grounds and indoor practice areas.
+- Student clubs for cultural, technical, and social activities.
+- Career guidance and placement support services.
+
+Important note
+The facilities listed here are fictional examples for demonstration purposes only. They do not represent verified real placement statistics, internship guarantees, rankings, accreditation details, or employer partnerships.

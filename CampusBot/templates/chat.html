@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusBot - AI Admission Chatbot</title>
+    <meta name="description" content="Chat directly with CampusBot, your local AI-powered college admission assistant.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Marked.js Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- DOMPurify Safe Sanitization -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="chat-app-body">
+    <div class="chat-layout" id="chat-layout">
+        <!-- Sidebar -->
+        <aside class="chat-sidebar" id="chat-sidebar">
+            <div class="sidebar-top">
+                <!-- Brand Header -->
+                <div class="sidebar-brand">
+                    <a href="/" class="brand-link" title="Return to Home">
+                        <div class="brand-icon">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div class="brand-text">
+                            <span>Campus<strong>Bot</strong></span>
+                            <small>AI Assistant</small>
+                        </div>
+                    </a>
+                    <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close sidebar">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- New Chat Button -->
+                <button class="btn btn-primary btn-new-chat" id="new-chat-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>New Conversation</span>
+                </button>
+            </div>
+
+            <!-- Conversations List -->
+            <div class="sidebar-history-container">
+                <div class="history-label">Recent Conversations</div>
+                <div class="conversations-list" id="conversations-list">
+                    <!-- Populated dynamically via chat.js -->
+                    <div class="history-loading">
+                        <i class="fa-solid fa-spinner fa-spin"></i> Loading chats...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Bottom Info & Local AI Status Indicator -->
+            <div class="sidebar-bottom">
+                <!-- Local AI Status Card -->
+                <div class="ai-status-card" id="ai-status-card">
+                    <div class="status-card-header">
+                        <span class="status-card-title"><i class="fa-solid fa-server"></i> Local AI Engine</span>
+                        <span class="status-indicator-badge" id="ai-status-indicator">
+                            <span class="status-dot status-loading" id="ai-status-dot"></span>
+                            <span class="status-text" id="ai-status-text">Checking...</span>
+                        </span>
+                    </div>
+                    <div class="status-card-details" id="ai-status-details">
+                        <div class="status-row">
+                            <span>Model:</span>
+                            <strong id="ai-model-name">llama3.2:3b</strong>
+                        </div>
+                        <div class="status-row">
+                            <span>Knowledge Base:</span>
+                            <strong id="ai-chunks-count">0 chunks</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="sidebar-actions">
+                    <a href="/" class="sidebar-action-link" title="Go to Home Page">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="/admin" class="sidebar-action-link" title="Knowledge Base Admin">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span>Documents</span>
+                    </a>
+                    <button class="sidebar-action-link text-danger" id="clear-active-chat-btn" title="Clear messages in current chat">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <span>Clear Chat</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Sidebar Backdrop for Mobile -->
+        <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+        <!-- Main Chat Area -->
+        <main class="chat-main" id="chat-main">
+            <!-- Chat Topbar -->
+            <header class="chat-topbar">
+                <div class="topbar-left">
+                    <button class="mobile-toggle-btn" id="chat-mobile-toggle" aria-label="Toggle sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="conversation-info">
+                        <h2 class="conversation-title" id="active-conv-title">College Admission Assistant</h2>
+                        <span class="mode-pill pill-rag" id="active-mode-pill">
+                            <i class="fa-solid fa-file-shield"></i>
+                            <span id="active-mode-text">Document Grounded</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="quick-status-badge" id="quick-status-badge">
+                        <span class="pulse-dot-sm" id="topbar-status-dot"></span>
+                        <span id="topbar-status-text">Ollama AI</span>
+                    </div>
+                    <a href="/" class="btn btn-outline btn-sm topbar-home-btn" title="Back to Homepage">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="hide-mobile">Home</span>
+                    </a>
+                </div>
+            </header>
+
+            <!-- Offline Warning Banner (Shown if Ollama service is unreachable) -->
+            <div class="offline-banner" id="offline-banner" style="display: none;">
+                <div class="banner-content">
+                    <i class="fa-solid fa-triangle-exclamation banner-icon"></i>
+                    <div class="banner-text">
+                        <strong>CampusBot's local AI service is unavailable.</strong>
+                        <span id="offline-banner-msg">Please start Ollama to enable genuine local AI responses.</span>
+                    </div>
+                </div>
+                <div class="banner-actions">
+                    <button class="btn btn-sm btn-white" id="offline-retry-btn">
+                        <i class="fa-solid fa-rotate-right"></i> Check Again
+                    </button>
+                    <button class="btn btn-sm btn-outline-white" id="offline-setup-info-btn">
+                        <i class="fa-solid fa-circle-info"></i> Setup Help
+                    </button>
+                </div>
+            </div>
+
+            <!-- Messages Container -->
+            <div class="chat-messages-container" id="chat-messages-container">
+                <!-- Welcome View (Visible when conversation has no messages) -->
+                <div class="chat-welcome-view" id="chat-welcome-view">
+                    <div class="welcome-card-hero">
+                        <div class="welcome-avatar-icon">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <h1 class="welcome-title">Hi! I'm CampusBot 👋</h1>
+                        <p class="welcome-subtitle">
+                            I'm here to help you with your college admission journey. Ask me about courses, eligibility, fees, scholarships, documents, or campus facilities.
+                        </p>
+                        <div class="welcome-tags">
+                            <span class="w-tag"><i class="fa-solid fa-graduation-cap"></i> Courses</span>
+                            <span class="w-tag"><i class="fa-solid fa-file-check"></i> Eligibility</span>
+                            <span class="w-tag"><i class="fa-solid fa-receipt"></i> Fees</span>
+                            <span class="w-tag"><i class="fa-solid fa-award"></i> Scholarships</span>
+                            <span class="w-tag"><i class="fa-solid fa-folder-open"></i> Documents</span>
+                        </div>
+                    </div>
+
+                    <!-- 6 Required Suggested Question Cards -->
+                    <div class="suggestions-section">
+                        <div class="suggestions-header">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <span>Frequently Asked Starter Questions</span>
+                        </div>
+                        <div class="suggestions-grid" id="welcome-suggestions-grid"></div>
+                    </div>
+                </div>
+
+                <!-- Chat Messages Feed (Populated dynamically via JS) -->
+                <div class="messages-feed" id="messages-feed" style="display: none;"></div>
+
+                <div class="suggestions-section post-response-suggestions" id="post-response-suggestions" style="display: none;">
+                    <div class="suggestions-header">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span>Suggested Questions</span>
+                    </div>
+                    <div class="suggestions-grid" id="post-response-suggestions-grid"></div>
+                </div>
+
+                <!-- Typing / Thinking Indicator -->
+                <div class="typing-indicator-row" id="typing-indicator-row" style="display: none;">
+                    <div class="msg-avatar bot-avatar">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="typing-bubble">
+                        <div class="typing-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="typing-label">CampusBot is thinking...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input Area -->
+            <footer class="chat-input-area">
+                <form class="chat-input-form" id="chat-form">
+                    <div class="input-wrapper">
+                        <textarea
+                            id="user-input"
+                            class="chat-textarea"
+                            placeholder="Ask CampusBot about admissions, courses, fees, or documents..."
+                            rows="1"
+                            maxlength="3000"
+                            autocomplete="off"
+                            spellcheck="true"
+                        ></textarea>
+                        
+                        <div class="input-actions">
+                            <span class="char-counter" id="char-counter">0 / 3000</span>
+                            <button type="submit" class="send-btn" id="send-btn" disabled title="Send Question (Enter)">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div class="input-footer-caption">
+                    <span>Press <strong>Enter</strong> to send, <strong>Shift + Enter</strong> for a new line.</span>
+                    <span class="disclaimer-note">• CampusBot grounds answers on official documents. Verify critical dates with admission staff.</span>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Source Citation Details Modal -->
+    <div class="modal-overlay" id="source-modal" style="display: none;">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <i class="fa-solid fa-file-lines text-primary"></i>
+                    <div>
+                        <h3 id="modal-doc-title">Document Citation</h3>
+                        <small id="modal-doc-meta">Page 1 • Similarity: 0.85</small>
+                    </div>
+                </div>
+                <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="citation-meta-box">
+                    <div class="meta-item">
+                        <span class="meta-label">Source Document:</span>
+                        <strong id="modal-doc-file">-</strong>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Relevance Score:</span>
+                        <strong id="modal-doc-score">-</strong>
+                    </div>
+                </div>
+                <div class="passage-box">
+                    <span class="passage-label">Retrieved Passage Excerpt:</span>
+                    <pre class="passage-content" id="modal-passage-text"></pre>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-sm" id="modal-done-btn">Close Citation</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ollama Setup Assistance Modal -->
+    <div class="modal-overlay" id="setup-help-modal" style="display: none;">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <i class="fa-solid fa-server text-primary"></i>
+                    <div>
+                        <h3>Setting Up Local Ollama AI</h3>
+                        <small>100% Free • Windows Local Execution</small>
+                    </div>
+                </div>
+                <button class="modal-close-btn" id="setup-modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>CampusBot runs 100% free locally on your computer using <strong>Ollama</strong>. To start inference:</p>
+                <ol class="setup-steps-list">
+                    <li>
+                        <strong>1. Download and Install Ollama for Windows:</strong>
+                        <p>Download from <a href="https://ollama.com/download/windows" target="_blank" rel="noopener">ollama.com/download/windows</a> and install.</p>
+                    </li>
+                    <li>
+                        <strong>2. Pull the chat model:</strong>
+                        <p>Open Command Prompt or PowerShell and run:</p>
+                        <div class="code-copy-box">
+                            <code>ollama pull llama3.2:3b</code>
+                        </div>
+                        <p class="mt-2">Document retrieval uses a built-in offline search, so no separate embedding model download is required.</p>
+                    </li>
+                    <li>
+                        <strong>3. Verify Ollama is running:</strong>
+                        <p>Ensure the Ollama icon is visible in your Windows system tray or run <code>ollama serve</code>.</p>
+                    </li>
+                </ol>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btn-sm" id="setup-help-ok-btn">Got It</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat JavaScript Controller -->
+    <script src="/static/js/chat.js"></script>
+    <script>
+        window.CAMPUSBOT_SUGGESTIONS = {{ suggested_questions | tojson }};
+    </script>
+</body>
+</html>

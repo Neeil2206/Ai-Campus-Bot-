@@ -1,0 +1,139 @@
+CampusBot Demo Admission Knowledge Base
+
+This file contains fictional example content for demo testing and UI validation. It is kept separate from official college records and is only used when demo mode is enabled.
+
+## Q1: What engineering branches are available?
+
+### Engineering Branches Available
+
+Our demo college offers the following six undergraduate engineering branches:
+
+1. **Computer Science and Engineering (CSE)**
+   - Focuses on programming, software development, algorithms, operating systems, and computer networks.
+2. **Information Technology (IT)**
+   - Covers web development, databases, cloud computing, cybersecurity, and information systems.
+3. **Electronics and Communication Engineering (ECE)**
+   - Includes digital electronics, communication systems, embedded systems, and microprocessors.
+4. **Mechanical Engineering (ME)**
+   - Covers machine design, manufacturing, thermodynamics, and robotics.
+5. **Artificial Intelligence and Data Science (AI & DS)**
+   - Focuses on artificial intelligence, machine learning, data analytics, and intelligent applications.
+6. **Electrical Engineering (EE)**
+   - Includes electrical machines, power systems, control systems, and electrical circuit design.
+
+**Choosing a branch:** Consider your interests, preferred subjects, curriculum, and career goals before making a decision.
+
+## Q2: Explain the admission process.
+
+### Step-by-Step Admission Process
+
+1. **Check eligibility:** Review the academic qualifications and entrance examination requirements for your selected course.
+2. **Complete registration:** Fill out the application form with your personal and academic information.
+3. **Prepare documents:** Collect mark sheets, identity proof, photographs, and other required certificates.
+4. **Take the entrance examination:** Complete the applicable examination and obtain the required score or rank.
+5. **Participate in counselling:** Follow the applicable merit-based selection and counselling process.
+6. **Seat allotment:** Select or accept an available branch according to your merit, preferences, and eligibility.
+7. **Document verification:** Submit the required documents for verification.
+8. **Pay admission fees:** Complete the payment and retain the receipt.
+9. **Confirm admission:** Follow the instructions for reporting, orientation, and commencement of classes.
+
+**Tip:** Keep digital and physical copies of your application and payment receipts.
+
+## Q3: Tell me about eligibility criteria.
+
+### Eligibility Criteria for Engineering Admission
+
+For this fictional demonstration, assume the following requirements:
+
+1. **Educational qualification:** Passed Class 12 or an equivalent examination from a recognized board.
+2. **Required subjects:** Physics and Mathematics, together with other subjects prescribed for the selected engineering course.
+3. **Minimum marks:** 45% aggregate for general-category applicants and 40% for eligible reserved-category applicants.
+4. **Entrance examination:** A valid score in the applicable engineering entrance examination may be required.
+5. **Document verification:** Academic certificates and applicable eligibility certificates must be submitted.
+6. **Seat availability:** Admission depends on merit, applicable rules, counselling, and available seats.
+
+Actual eligibility rules can differ by institution, course, admission year, and regulations. The percentages above are fictional values for demo testing.
+
+## Q4: How can I find the fee structure?
+
+### Illustrative Annual Engineering Fee Structure
+
+| Fee Component | Annual Amount |
+| --- | ---: |
+| Tuition Fee | ₹90,000 |
+| Laboratory Fee | ₹8,000 |
+| Library Fee | ₹3,000 |
+| Examination Fee | ₹5,000 |
+| Student Activities Fee | ₹2,000 |
+| **Total Annual Fee** | **₹1,08,000** |
+
+**Additional Information**
+
+- Hostel and mess charges are not included.
+- Transportation charges are not included.
+- Eligible students may receive scholarships or fee concessions.
+- Fees may vary by program and institutional rules.
+
+**Example calculation:** If a student receives a hypothetical scholarship of ₹10,000, the remaining illustrative annual fee would be ₹98,000.
+
+All amounts are fictional demo data used for controlled testing.
+
+## Q5: What documents are required for admission?
+
+### Admission Document Checklist
+
+Prepare the following documents as applicable:
+
+1. Class 10 mark sheet and passing certificate.
+2. Class 12 mark sheet and passing certificate.
+3. Entrance examination scorecard.
+4. Entrance examination admit card, if required.
+5. School or college leaving certificate.
+6. Transfer certificate, if applicable.
+7. Government-issued identity proof.
+8. Recent passport-size photographs.
+9. Domicile certificate, if required.
+10. Caste certificate and caste validity certificate, where applicable.
+11. Non-creamy layer certificate or other applicable eligibility certificates, if required.
+12. Migration certificate, if applicable.
+13. Seat allotment letter or admission confirmation document.
+14. Fee payment receipt.
+
+**Before submitting your documents:**
+
+- Verify that your name and date of birth match across records.
+- Carry original documents and required photocopies.
+- Keep digital copies as a backup.
+- Check whether extra certificates are required for your category.
+
+## Q6: What scholarships can students apply for?
+
+### Scholarships and Financial Assistance
+
+Students may explore the following scholarship categories in this fictional demo:
+
+1. **Merit-based scholarships** — For students with strong academic performance.
+2. **Need-based financial assistance** — For students who demonstrate financial need.
+3. **Reserved-category scholarships** — For eligible students under applicable schemes.
+4. **Minority scholarships** — For students meeting requirements of relevant schemes.
+5. **Government scholarships** — For eligible students under relevant central or state programs.
+6. **Special achievement awards** — For recognized achievements in academics, sports, innovation, or other approved activities.
+
+**Common application requirements**
+
+- Academic mark sheets
+- Identity proof
+- Income certificate, if required
+- Applicable category certificate
+- Bank account details
+- Admission proof and fee receipt
+
+**Application process**
+
+1. Identify the scholarship category.
+2. Review the eligibility requirements.
+3. Collect the required documents.
+4. Submit the application before the applicable deadline.
+5. Track the application and respond to verification requests.
+
+Eligibility, scholarship amounts, and deadlines depend on the applicable scheme.

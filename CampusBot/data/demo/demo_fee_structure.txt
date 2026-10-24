@@ -1,0 +1,28 @@
+DEMO DATA — FICTIONAL EXAMPLE FOR TESTING CAMPUSBOT. NOT OFFICIAL COLLEGE INFORMATION.
+DEMONSTRATION DATA ONLY — NOT AN OFFICIAL COLLEGE POLICY.
+
+Demo Institute of Technology
+Illustrative Annual Fees
+
+This fee schedule is a fictional example created for CampusBot software testing. It is not a real tuition schedule, official announcement, or binding payment notice.
+
+| Fee component | Annual amount |
+| --- | ---: |
+| Tuition fee | ₹90,000 |
+| Laboratory and practical fee | ₹8,000 |
+| Library and student activity fee | ₹4,000 |
+| Examination fee | ₹3,000 |
+| Total illustrative annual fee | ₹1,05,000 |
+
+Additional fictional charges
+- One-time admission processing fee: ₹2,000.
+- Refundable caution deposit: ₹5,000.
+- Illustrative first-year amount including the one-time fee and deposit: ₹1,12,000.
+- Hostel and transport charges are excluded.
+
+Arithmetic check
+₹90,000 + ₹8,000 + ₹4,000 + ₹3,000 = ₹1,05,000
+₹1,05,000 + ₹2,000 + ₹5,000 = ₹1,12,000
+
+Important note
+These figures are fictional examples for product testing only and must not be treated as actual college fees. Actual payment schedules, refund rules, and policy details must be confirmed from the official institution or government notice if they exist.

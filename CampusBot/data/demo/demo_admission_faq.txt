@@ -1,0 +1,67 @@
+DEMO DATA — FICTIONAL EXAMPLE FOR TESTING CAMPUSBOT. NOT OFFICIAL COLLEGE INFORMATION.
+DEMONSTRATION DATA ONLY — NOT AN OFFICIAL COLLEGE POLICY.
+
+Demo Institute of Technology
+Demo Admissions FAQ and Information Sheet
+
+This file is a fictional example created for CampusBot testing and product demonstration. It is not an official admissions notice, government notice, or real college policy.
+
+Overview
+- College name: Demo Institute of Technology
+- Campus location: Demo City, Sample District
+- Admissions office: Demo Admissions Desk, Academic Block A
+- Email: admissions@demoit.example
+- Phone: +91 90000 00000
+- Office hours: Monday to Saturday, 9:00 AM to 5:00 PM
+
+College overview
+Demo Institute of Technology is a fictional engineering college used to demonstrate how CampusBot can answer student admission questions. The example data below is intended only for software testing and UI validation.
+
+Admission documents checklist
+1. Class 10 mark sheet and passing certificate.
+2. Class 12 mark sheet and passing certificate.
+3. Transfer certificate or leaving certificate from the last school.
+4. Government-issued photo ID.
+5. Recent passport-size photographs.
+6. Income certificate, if applying for need-based support.
+7. Entrance exam score card, where applicable for the illustrative program.
+
+Application procedure
+1. Review the sample course list and eligibility criteria.
+2. Complete the online application form.
+3. Upload the required academic documents.
+4. Pay the illustrative application processing fee, if required by the sample workflow.
+5. Participate in the illustrative counselling or selection process.
+6. Wait for the provisional selection notice.
+7. Attend document verification.
+8. Complete admission payment and receive confirmation.
+
+Admission timeline
+- Application window opens: 1 March
+- Submission deadline: 31 July
+- Entrance examination / counselling stage: June to July
+- Provisional selection notice: August
+- Document verification: August
+- Class commencement: August or September
+
+Frequently asked questions
+Q: What documents are required for admission?
+A: Students should prepare the mark sheets, transfer certificate, photo ID, photographs, and any applicable supporting documents for admissions.
+
+Q: Is an entrance exam mandatory in the demo process?
+A: For the illustrative engineering programs, an entrance examination or counselling step may be used in the sample workflow.
+
+Q: Are scholarships available in the demo data?
+A: Yes, the sample scholarship section describes illustrative merit and need-based support. These are not real government or official institutional schemes.
+
+Q: Is the fee schedule official?
+A: No. The sample fee schedule is fictional demonstration content created for testing and should not be treated as a real college fee schedule.
+
+Document verification procedure
+- Candidates report to the admissions desk with original documents and photocopies.
+- Staff verify identity, marks, and academic certificates.
+- Any mismatch or missing document must be corrected before the sample admission confirmation step.
+- The illustrative verification process is for concept demonstration only and is not an official real-world procedure.
+
+Important note
+All data in this file is fictional demo content intended to test CampusBot retrieval, formatting, and answer generation. It is not official college information and should not be mistaken for a real institution's policy.

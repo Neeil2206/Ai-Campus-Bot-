@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusBot Admin Portal - Document Management</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>🎓 CampusBot</h1>
+                    <span>Knowledge Base Admin</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="status-indicator-badge" id="header-status-badge">
+                    <span class="status-dot status-loading"></span>
+                    <span class="status-text" id="header-status-text">Checking status...</span>
+                </div>
+                <nav class="nav-links">
+                    <a href="/" class="nav-link"><i class="fa-solid fa-comments"></i> Chat Assistant</a>
+                    <a href="/admin" class="nav-link active"><i class="fa-solid fa-sliders"></i> Admin Portal</a>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="admin-layout">
+            <div class="admin-header">
+                <h2>Knowledge Base Management</h2>
+                <p>Upload and manage the official college admission documents that ground CampusBot's responses.</p>
+            </div>
+
+            <!-- Dynamic Knowledge Base Status Grid -->
+            <div class="admin-status-cards-grid">
+                <div class="status-metric-card">
+                    <div class="card-icon-area bg-blue">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <div class="card-info-area">
+                        <span class="metric-title">Vector Database Status</span>
+                        <h4 id="db-status-text"><span class="badge badge-checking">Checking...</span></h4>
+                    </div>
+                </div>
+                <div class="status-metric-card">
+                    <div class="card-icon-area bg-gold">
+                        <i class="fa-solid fa-file-invoice"></i>
+                    </div>
+                    <div class="card-info-area">
+                        <span class="metric-title">Documents</span>
+                        <h4 id="db-docs-count">0</h4>
+                    </div>
+                </div>
+                <div class="status-metric-card">
+                    <div class="card-icon-area bg-green">
+                        <i class="fa-solid fa-cubes"></i>
+                    </div>
+                    <div class="card-info-area">
+                        <span class="metric-title">Indexed Chunks</span>
+                        <h4 id="db-chunks-count">0</h4>
+                    </div>
+                </div>
+                <div class="status-metric-card">
+                    <div class="card-icon-area bg-purple">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <div class="card-info-area">
+                        <span class="metric-title">Last Updated</span>
+                        <h4 id="db-last-updated">Never</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-grid">
+                <!-- Document Upload Section -->
+                <section class="admin-card upload-section">
+                    <h3><i class="fa-solid fa-cloud-arrow-up text-gold"></i> Upload Documents</h3>
+                    <p class="section-desc">Add official brochures, fees structures, course lists, or hostel details. Supported formats: <strong>PDF, DOCX, TXT</strong>.</p>
+                    
+                    <form id="upload-form" class="upload-box">
+                        <input type="file" id="file-input" accept=".pdf,.docx,.txt" style="display: none;">
+                        <div class="drop-zone" id="drop-zone">
+                            <i class="fa-solid fa-file-pdf drop-icon"></i>
+                            <p class="drop-text">Drag & drop your file here, or <span class="browse-link">browse</span></p>
+                            <p class="file-limits">Maximum size: 10MB</p>
+                        </div>
+                        
+                        <div class="selected-file-area" id="selected-file-info" style="display: none;">
+                            <div class="file-meta">
+                                <i class="fa-regular fa-file-lines file-icon"></i>
+                                <div class="file-details">
+                                    <span class="file-name" id="selected-file-name">document.pdf</span>
+                                    <span class="file-size" id="selected-file-size">1.2 MB</span>
+                                </div>
+                            </div>
+                            <button type="button" id="remove-file-btn" class="icon-btn-danger">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+
+                        <!-- Stylized Ingestion Checklist -->
+                        <div class="ingestion-checklist-card" id="ingestion-progress-checklist" style="display: none;">
+                            <h4>Document Ingestion Progress</h4>
+                            <ul class="checklist-items">
+                                <li id="step-upload"><span class="check-bullet"><i class="fa-solid fa-circle-notch fa-spin"></i></span> Document uploaded successfully</li>
+                                <li id="step-extract"><span class="check-bullet"><i class="fa-regular fa-circle"></i></span> Clean text extracted</li>
+                                <li id="step-chunks"><span class="check-bullet"><i class="fa-regular fa-circle"></i></span> Semantic chunks generated</li>
+                                <li id="step-embed"><span class="check-bullet"><i class="fa-regular fa-circle"></i></span> OpenAI vector embeddings generated</li>
+                                <li id="step-save"><span class="check-bullet"><i class="fa-regular fa-circle"></i></span> Added to knowledge base index</li>
+                            </ul>
+                        </div>
+
+                        <div id="upload-status" class="alert-status" style="display: none;"></div>
+
+                        <button type="submit" id="upload-btn" class="primary-btn block-btn" disabled>
+                            <i class="fa-solid fa-arrow-up-from-bracket"></i> Ingest & Index Document
+                        </button>
+                    </form>
+                </section>
+
+                <!-- Document List Section -->
+                <section class="admin-card list-section">
+                    <h3><i class="fa-solid fa-folder-open text-gold"></i> Active Documents</h3>
+                    <p class="section-desc">These official documents are currently indexed in the vector database and searchable by students.</p>
+                    
+                    <div class="table-container">
+                        <table class="documents-table">
+                            <thead>
+                                <tr>
+                                    <th>Document Name</th>
+                                    <th>Size</th>
+                                    <th>Chunks</th>
+                                    <th>Upload Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="documents-table-body">
+                                <tr>
+                                    <td colspan="6" class="loading-cell">
+                                        <i class="fa-solid fa-spinner fa-spin"></i> Loading documents...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main JS Scripts -->
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
